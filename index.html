@@ -1,394 +1,293 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technical Support - CyberBeads</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>PastePal · 技术支持</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        :root {
-            --primary: #4facfe;
-            --primary-dark: #3a8fd5;
-            --secondary: #00f2fe;
-            --accent: #764ba2;
-            --light: #f8f9fa;
-            --dark: #2c3e50;
-            --gray: #666;
-            --white: #ffffff;
-            --shadow: 0 10px 30px rgba(0,0,0,0.1);
-            --radius: 15px;
-        }
-        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji";
+            background-color: #f5f7fa;
+            color: #1c1e24;
             line-height: 1.6;
-            color: var(--dark);
-            background: linear-gradient(135deg, #667eea 0%, var(--accent) 100%);
-            min-height: 100vh;
-            padding: 20px;
+            padding: 2rem 1rem;
         }
-        
-        .container {
+        .support-container {
             max-width: 900px;
             margin: 0 auto;
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
+            background-color: white;
+            border-radius: 24px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04), 0 2px 10px rgba(0,0,0,0.02);
+            padding: 2.5rem 2.5rem;
         }
-        
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: var(--white);
-            padding: 50px 30px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .header::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-        }
-        
-        .header-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .logo {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        
-        .header p {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .content {
-            padding: 50px 40px;
-        }
-        
-        .section {
-            margin-bottom: 50px;
-        }
-        
-        .section:last-child {
-            margin-bottom: 0;
-        }
-        
-        h2 {
-            color: var(--primary);
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-            border-left: 5px solid var(--primary);
-            padding-left: 15px;
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.2rem;
+            color: #0a84ff;
             display: flex;
             align-items: center;
+            gap: 10px;
         }
-        
-        h2 i {
-            margin-right: 12px;
+        .subhead {
+            font-size: 1rem;
+            color: #5f6b7a;
+            border-bottom: 1px solid #e9edf2;
+            padding-bottom: 1.2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        h2 {
             font-size: 1.5rem;
+            font-weight: 580;
+            margin-top: 2rem;
+            margin-bottom: 1.3rem;
+            color: #1e293b;
+            border-left: 5px solid #0a84ff;
+            padding-left: 1.1rem;
         }
-        
-        .contact-info {
-            background: var(--light);
-            padding: 30px;
-            border-radius: var(--radius);
-            border-left: 5px solid var(--primary);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .contact-info p {
-            margin-bottom: 20px;
+        h3 {
             font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: #1e3a5f;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
-        
-        .contact-options {
+        p {
+            margin-bottom: 1rem;
+            color: #2d3a4a;
+        }
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin: 1.8rem 0 1rem;
+        }
+        .faq-item {
+            background-color: #f8fafd;
+            border-radius: 18px;
+            padding: 1.2rem 1.5rem;
+            border: 1px solid #e6edf4;
+            transition: all 0.1s ease;
+        }
+        .faq-item:hover {
+            border-color: #bdd3ff;
+            background-color: #fafcff;
+        }
+        .faq-item p {
+            margin-bottom: 0;
+            margin-top: 0.3rem;
+            color: #41505f;
+        }
+        .contact-card {
+            background: linear-gradient(145deg, #f0f7ff, #e9f2fc);
+            border-radius: 26px;
+            padding: 2rem 2.2rem;
+            margin: 2.2rem 0 1.5rem;
+            border: 1px solid rgba(10,132,255,0.2);
+            box-shadow: 0 6px 14px rgba(10,132,255,0.06);
+        }
+        .contact-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-between;
+        }
+        .email-box {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 60px;
+            border: 1px solid #cbddee;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .email-box span {
+            font-weight: 500;
+            color: #1e293b;
+            letter-spacing: 0.2px;
+        }
+        .email-link {
+            color: #0a84ff;
+            text-decoration: none;
+            border-bottom: 1px dashed #0a84ff;
+            font-weight: 500;
+        }
+        .email-link:hover {
+            border-bottom-style: solid;
+        }
+        .mail-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #0a84ff;
+            color: white;
+            font-weight: 500;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border: none;
+            box-shadow: 0 4px 10px rgba(10,132,255,0.3);
+            transition: all 0.15s ease;
+        }
+        .mail-btn:hover {
+            background-color: #0071e3;
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(10,132,255,0.3);
+        }
+        .mail-btn i {
+            font-size: 1.3rem;
+            font-style: normal;
+        }
+        .response-note {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #54708f;
+            background: rgba(255,255,255,0.7);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            display: inline-block;
+        }
+        .footer-note {
+            margin-top: 2.8rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.85rem;
+            color: #6c7a8c;
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .contact-option {
-            display: flex;
+            justify-content: space-between;
             align-items: center;
-            background: var(--white);
-            padding: 15px 25px;
-            border-radius: 50px;
+        }
+        .badge {
+            background-color: #e6f0ff;
+            color: #0a4c8c;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        a {
+            color: #0a84ff;
             text-decoration: none;
-            color: var(--primary);
-            font-weight: 600;
-            border: 2px solid #e9ecef;
-            transition: all 0.3s ease;
-            flex: 1;
-            min-width: 250px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         }
-        
-        .contact-option:hover {
-            background: var(--primary);
-            color: var(--white);
-            border-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(79, 172, 254, 0.3);
+        hr {
+            border: none;
+            border-top: 1px solid #e2eaf2;
+            margin: 2rem 0 0.5rem;
         }
-        
-        .contact-option i {
-            margin-right: 12px;
-            font-size: 1.3rem;
-        }
-        
-        .faq-container {
-            display: grid;
-            gap: 20px;
-        }
-        
-        .faq-item {
-            background: var(--white);
-            border: 2px solid #f1f3f4;
-            border-radius: var(--radius);
-            padding: 25px;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-        }
-        
-        .faq-item:hover {
-            border-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-        
-        .question {
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 12px;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .question i {
-            color: var(--primary);
-            margin-right: 10px;
-            margin-top: 3px;
-            font-size: 1rem;
-        }
-        
-        .answer {
-            color: var(--gray);
-            line-height: 1.7;
-            padding-left: 26px;
-        }
-        
-        .version-info {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            color: var(--white);
-            padding: 30px;
-            border-radius: var(--radius);
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .version-label {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            opacity: 0.9;
-        }
-        
-        .version-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin: 10px 0;
-        }
-        
-        .version-date {
-            opacity: 0.8;
-            font-size: 1rem;
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 40px;
-            background: var(--light);
-            color: var(--gray);
-            border-top: 1px solid #e9ecef;
-        }
-        
-        .footer p {
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-        
-        .app-badge {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            margin-top: 15px;
-            font-size: 0.9rem;
-        }
-        
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            
-            .header {
-                padding: 40px 20px;
-            }
-            
-            .header h1 {
-                font-size: 2.2rem;
-            }
-            
-            .content {
-                padding: 30px 20px;
-            }
-            
-            .contact-options {
-                flex-direction: column;
-            }
-            
-            .contact-option {
-                min-width: 100%;
-            }
+        @media (max-width: 600px) {
+            .support-container { padding: 1.8rem 1.2rem; }
+            h1 { font-size: 1.9rem; }
+            .contact-row { flex-direction: column; align-items: flex-start; }
+            .email-box { width: 100%; justify-content: center; }
+            .mail-btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-peace"></i>
-                </div>
-                <h1>CyberBeads Support</h1>
-                <p>Your digital wellness companion for Apple Watch</p>
-            </div>
+    <div class="support-container">
+        <h1>
+            <span>🛠️</span> PastePal 技术支持
+        </h1>
+        <div class="subhead">
+            <span>帮助中心 & 常见问题</span>
+            <span class="badge">最新版本 1.2.4</span>
         </div>
-        
-        <div class="content">
-            <div class="section">
-                <h2><i class="fas fa-life-ring"></i> Contact Us</h2>
-                <div class="contact-info">
-                    <p>If you encounter any issues or have questions while using CyberBeads, please don't hesitate to reach out to us through the following channels:</p>
-                    
-                    <div class="contact-options">
-                        <a href="mailto:992976910@qq.com" class="contact-option">
-                            <i class="fas fa-envelope"></i>
-                            <span>Email Support: 992976910@qq.com</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <div class="question">
-                            <i class="fas fa-question"></i>
-                            <span>What is the main function of the app?</span>
-                        </div>
-                        <div class="answer">CyberBeads is a digital mala beads app designed for Apple Watch. It simulates the tactile feedback of counting beads to help users find moments of peace and focus in their busy daily lives.</div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="question">
-                            <i class="fas fa-question"></i>
-                            <span>Does the app collect my personal data?</span>
-                        </div>
-                        <div class="answer">No. CyberBeads does not collect, store, or process any user personal information or usage data. All features run locally on your device.</div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="question">
-                            <i class="fas fa-question"></i>
-                            <span>Does the app require an internet connection?</span>
-                        </div>
-                        <div class="answer">No. CyberBeads operates completely offline and does not require any internet connection.</div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="question">
-                            <i class="fas fa-question"></i>
-                            <span>Which Apple Watch models are supported?</span>
-                        </div>
-                        <div class="answer">CyberBeads supports all Apple Watch models running watchOS 7.0 and above.</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2><i class="fas fa-comments"></i> Feedback & Suggestions</h2>
-                <div class="faq-item">
-                    <p>We highly value user feedback. If you have any improvement suggestions or feature requests, please feel free to contact us via email. We carefully consider every piece of feedback and strive to enhance the app in future updates.</p>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2><i class="fas fa-info-circle"></i> Version Information</h2>
-                <div class="version-info">
-                    <div class="version-label">Current Version</div>
-                    <div class="version-number">1.0</div>
-                    <div class="version-date">Released November 2023</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <p>Thank you for using CyberBeads!</p>
-            <p>Find your moment of peace in the digital world</p>
-            <div class="app-badge">Exclusively for Apple Watch</div>
-        </div>
-    </div>
 
-    <script>
-        // Add subtle animation to FAQ items when they come into view
-        document.addEventListener('DOMContentLoaded', function() {
-            const faqItems = document.querySelectorAll('.faq-item');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            faqItems.forEach(item => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(20px)';
-                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(item);
-            });
-        });
-    </script>
+        <!-- 快速联系卡片 (显眼) -->
+        <div class="contact-card">
+            <div style="margin-bottom: 0.8rem; font-size: 1.2rem; font-weight: 500; display: flex; gap: 8px;">
+                <span>📬</span> 直接联系开发者
+            </div>
+            <div class="contact-row">
+                <div class="email-box">
+                    <span>📧</span>
+                    <span>992976910@qq.com</span>
+                    <a href="mailto:992976910@qq.com?subject=PastePal%20技术支持%20请求" style="margin-left: 8px;">✉️</a>
+                </div>
+                <a href="mailto:992976910@qq.com?subject=PastePal%20技术支持%20请求&body=您好%2C%0A%0A我遇到了以下问题：" class="mail-btn">
+                    <i>📨</i> 发送邮件
+                </a>
+            </div>
+            <div class="response-note">
+                ⏳ 通常 24 小时内回复（工作日）
+            </div>
+        </div>
+
+        <h2>❓ 常见问题 (FAQ)</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <h3>🔹 剪贴板无法自动记录 / 权限问题</h3>
+                <p>请打开 <strong>系统设置 → 隐私与安全性 → 辅助功能</strong>，确保已勾选 PastePal。同时检查“剪贴板”权限是否开启。若仍未解决，尝试重启应用或重新授予权限。</p>
+            </div>
+            <div class="faq-item">
+                <h3>🔹 边栏唤不出 / 快捷键无反应</h3>
+                <p>默认快捷键为 <kbd>⌘⇧V</kbd>，若与其他应用冲突，可点击菜单栏图标进入 <strong>设置 → 快捷键</strong> 修改。也可通过菜单栏图标手动显示/隐藏边栏。</p>
+            </div>
+            <div class="faq-item">
+                <h3>🔹 iCloud 同步失败或设备间不一致</h3>
+                <p>• 确认所有设备已登录同一 Apple ID 并开启 iCloud 云盘。<br>• 在 PastePal 设置中打开“iCloud 同步”开关，等待几秒同步触发。<br>• 若仍无效，尝试关闭同步再开启，或重启应用。</p>
+            </div>
+            <div class="faq-item">
+                <h3>🔹 双击无法粘贴 / 无光标时误操作</h3>
+                <p>双击粘贴需要系统检测到有效的文本光标（如在输入框内），且已授予“辅助功能”权限。若无光标，双击只会复制内容而不粘贴。您也可以使用单击复制后手动粘贴。</p>
+            </div>
+            <div class="faq-item">
+                <h3>🔹 如何彻底清空历史记录？</h3>
+                <p>点击菜单栏图标右键 → 清空历史记录，或在设置中开启“退出时自动清空”。清空操作将同时移除所有预览缓存，无法恢复。</p>
+            </div>
+        </div>
+
+        <!-- 附加提示：故障诊断 -->
+        <div style="background-color: #ffffff; border-radius: 18px; padding: 1.5rem; border: 1px solid #e4ecf5; margin: 1.8rem 0;">
+            <h3 style="margin-top: 0; color: #0a5b9e;">📋 自行诊断小贴士</h3>
+            <p>如果遇到奇怪行为，可以尝试以下步骤：</p>
+            <ul style="margin-left: 1.6rem; margin-bottom: 0.3rem;">
+                <li>重启 PastePal（完全退出后重新打开）</li>
+                <li>检查 macOS 版本是否 ≥ 12.0 (Monterey)</li>
+                <li>查看菜单栏图标是否有红色角标提示权限问题</li>
+                <li>若问题与同步相关，可查看控制台日志（按住 ⌥ 点击菜单栏图标 → 打开日志文件夹）</li>
+            </ul>
+        </div>
+
+        <hr>
+        <div style="text-align: left; margin: 1.2rem 0 0.2rem;">
+            <p style="font-size: 0.96rem;">📢 如需更多帮助，请通过上方邮箱联系我们，并尽可能提供：</p>
+            <ul style="margin-left: 1.6rem; color: #2d4053;">
+                <li>问题描述及出现步骤</li>
+                <li>macOS 版本及设备型号</li>
+                <li>相关截图或录屏（可选）</li>
+            </ul>
+        </div>
+
+        <!-- 页脚信息 -->
+        <div class="footer-note">
+            <span>© 2026 PastePal. 保留一切权利。</span>
+            <span style="display: flex; gap: 20px;">
+                <a href="#" style="opacity: 0.7;">隐私政策</a>
+                <span>｜</span>
+                <a href="#" style="opacity: 0.7;">版本历史</a>
+            </span>
+        </div>
+        <p style="font-size: 0.8rem; color: #8e98a3; margin-top: 0.8rem; text-align: center; border-top: 1px dashed #dae2ec; padding-top: 1rem;">
+            技术支持专用邮箱：<a href="mailto:992976910@qq.com">992976910@qq.com</a> （点击即写邮件）<br>
+            本页最后更新：2026年2月13日
+        </p>
+    </div>
 </body>
 </html>
