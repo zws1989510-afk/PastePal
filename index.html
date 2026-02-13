@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-    <title>PastePal · 技术支持</title>
+    <title>PastePal · Support</title>
     <style>
         * {
             margin: 0;
@@ -24,16 +24,48 @@
             border-radius: 24px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.04), 0 2px 10px rgba(0,0,0,0.02);
             padding: 2.5rem 2.5rem;
+            position: relative;
+        }
+        .header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 0.2rem;
         }
         h1 {
             font-size: 2.2rem;
             font-weight: 600;
             letter-spacing: -0.01em;
-            margin-bottom: 0.2rem;
             color: #0a84ff;
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+        .lang-switch {
+            background: white;
+            border: 1px solid #d0ddee;
+            border-radius: 40px;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .lang-switch:hover {
+            background-color: #f0f7ff;
+            border-color: #0a84ff;
+        }
+        .lang-switch span {
+            color: #1e293b;
+        }
+        .lang-switch .icon {
+            font-size: 1.2rem;
         }
         .subhead {
             font-size: 1rem;
@@ -149,10 +181,6 @@
             transform: scale(1.02);
             box-shadow: 0 8px 16px rgba(10,132,255,0.3);
         }
-        .mail-btn i {
-            font-size: 1.3rem;
-            font-style: normal;
-        }
         .response-note {
             margin-top: 1rem;
             font-size: 0.9rem;
@@ -190,29 +218,92 @@
             border-top: 1px solid #e2eaf2;
             margin: 2rem 0 0.5rem;
         }
+        /* Language switch visibility */
+        .lang-en, .lang-zh {
+            transition: opacity 0.2s;
+        }
+        .lang-zh {
+            display: none;
+        }
+        body.zh .lang-en {
+            display: none;
+        }
+        body.zh .lang-zh {
+            display: block;
+        }
+        /* For elements that need inline-block or flex */
+        body.zh .lang-zh.lang-inline {
+            display: inline-block;
+        }
+        body.zh .lang-zh.lang-flex {
+            display: flex;
+        }
+        /* Ensure contact-card etc are block by default */
+        .lang-en, .lang-zh {
+            width: 100%;
+        }
+        .lang-en.lang-flex, .lang-zh.lang-flex {
+            display: flex;
+        }
+        /* Special handling for contact-row which is flex */
+        .contact-row.lang-en, .contact-row.lang-zh {
+            display: flex;
+        }
         @media (max-width: 600px) {
             .support-container { padding: 1.8rem 1.2rem; }
             h1 { font-size: 1.9rem; }
             .contact-row { flex-direction: column; align-items: flex-start; }
             .email-box { width: 100%; justify-content: center; }
             .mail-btn { width: 100%; justify-content: center; }
+            .header-row { flex-direction: column; align-items: flex-start; }
+            .lang-switch { align-self: flex-end; }
         }
     </style>
 </head>
-<body>
+<body class="en">   <!-- default to English -->
     <div class="support-container">
-        <h1>
-            <span>🛠️</span> PastePal 技术支持
-        </h1>
-        <div class="subhead">
-            <span>帮助中心 & 常见问题</span>
-            <span class="badge">最新版本 1.2.4</span>
+        <div class="header-row">
+            <h1>
+                <span>🛠️</span>
+                <span class="lang-en">PastePal Support</span>
+                <span class="lang-zh">PastePal 技术支持</span>
+            </h1>
+            <div class="lang-switch" id="langToggle" onclick="toggleLanguage()">
+                <span class="icon">🌐</span>
+                <span class="lang-en">中文</span>
+                <span class="lang-zh">English</span>
+            </div>
         </div>
 
-        <!-- 快速联系卡片 (显眼) -->
-        <div class="contact-card">
+        <!-- Subhead with version info (dual language) -->
+        <div class="subhead">
+            <span class="lang-en">Help Center & FAQ</span>
+            <span class="lang-zh">帮助中心 & 常见问题</span>
+            <span class="badge">1.2.4</span>
+        </div>
+
+        <!-- Contact card (dual language) -->
+        <div class="contact-card lang-en">
             <div style="margin-bottom: 0.8rem; font-size: 1.2rem; font-weight: 500; display: flex; gap: 8px;">
-                <span>📬</span> 直接联系开发者
+                <span>📬</span> <span>Contact Developer Directly</span>
+            </div>
+            <div class="contact-row">
+                <div class="email-box">
+                    <span>📧</span>
+                    <span>992976910@qq.com</span>
+                    <a href="mailto:992976910@qq.com?subject=PastePal%20Support%20Request" style="margin-left: 8px;">✉️</a>
+                </div>
+                <a href="mailto:992976910@qq.com?subject=PastePal%20Support%20Request&body=Hello%2C%0A%0AI'm%20experiencing%20an%20issue%3A" class="mail-btn">
+                    <span>📨</span> Send Email
+                </a>
+            </div>
+            <div class="response-note">
+                ⏳ Usually replies within 24 hours (weekdays)
+            </div>
+        </div>
+        <div class="contact-card lang-zh">
+            <div style="margin-bottom: 0.8rem; font-size: 1.2rem; font-weight: 500; display: flex; gap: 8px;">
+                <span>📬</span> <span>直接联系开发者</span>
             </div>
             <div class="contact-row">
                 <div class="email-box">
@@ -221,7 +312,7 @@
                     <a href="mailto:992976910@qq.com?subject=PastePal%20技术支持%20请求" style="margin-left: 8px;">✉️</a>
                 </div>
                 <a href="mailto:992976910@qq.com?subject=PastePal%20技术支持%20请求&body=您好%2C%0A%0A我遇到了以下问题：" class="mail-btn">
-                    <i>📨</i> 发送邮件
+                    <span>📨</span> 发送邮件
                 </a>
             </div>
             <div class="response-note">
@@ -229,8 +320,38 @@
             </div>
         </div>
 
-        <h2>❓ 常见问题 (FAQ)</h2>
-        <div class="faq-list">
+        <!-- FAQ section (dual language) -->
+        <h2>
+            <span class="lang-en">❓ Frequently Asked Questions</span>
+            <span class="lang-zh">❓ 常见问题 (FAQ)</span>
+        </h2>
+
+        <!-- English FAQ items -->
+        <div class="faq-list lang-en">
+            <div class="faq-item">
+                <h3>🔹 Clipboard not saving / Permission issues</h3>
+                <p>Go to <strong>System Settings → Privacy & Security → Accessibility</strong> and ensure PastePal is checked. Also check "Clipboard" permission. If still not working, try restarting the app or re-grant permissions.</p>
+            </div>
+            <div class="faq-item">
+                <h3>🔹 Sidebar won't show / Shortcut not working</h3>
+                <p>Default shortcut is <kbd>⌘⇧V</kbd>. If it conflicts with another app, you can change it in <strong>Settings → Shortcuts</strong> (click menubar icon). You can also show/hide the sidebar via the menubar icon.</p>
+            </div>
+            <div class="faq-item">
+                <h3>🔹 iCloud sync fails or inconsistent across devices</h3>
+                <p>• Make sure all devices are signed in to the same Apple ID and iCloud Drive is enabled.<br>• Turn on "iCloud Sync" in PastePal settings and wait a few seconds.<br>• If still not working, try toggling sync off and on again, or restart the app.</p>
+            </div>
+            <div class="faq-item">
+                <h3>🔹 Double‑click paste doesn't work / pastes when no cursor</h3>
+                <p>Double‑click paste requires a valid text cursor (e.g., in an input field) and Accessibility permission granted. If no cursor is detected, double‑click will only copy the item. You can always single‑click to copy and then paste manually.</p>
+            </div>
+            <div class="faq-item">
+                <h3>🔹 How to completely clear history?</h3>
+                <p>Right‑click the menubar icon → "Clear History", or enable "Clear on quit" in Settings. This removes all data and preview caches immediately; cannot be undone.</p>
+            </div>
+        </div>
+
+        <!-- Chinese FAQ items -->
+        <div class="faq-list lang-zh">
             <div class="faq-item">
                 <h3>🔹 剪贴板无法自动记录 / 权限问题</h3>
                 <p>请打开 <strong>系统设置 → 隐私与安全性 → 辅助功能</strong>，确保已勾选 PastePal。同时检查“剪贴板”权限是否开启。若仍未解决，尝试重启应用或重新授予权限。</p>
@@ -253,41 +374,72 @@
             </div>
         </div>
 
-        <!-- 附加提示：故障诊断 -->
+        <!-- Additional tips (dual language) -->
         <div style="background-color: #ffffff; border-radius: 18px; padding: 1.5rem; border: 1px solid #e4ecf5; margin: 1.8rem 0;">
-            <h3 style="margin-top: 0; color: #0a5b9e;">📋 自行诊断小贴士</h3>
-            <p>如果遇到奇怪行为，可以尝试以下步骤：</p>
+            <h3 style="margin-top: 0; color: #0a5b9e;">
+                <span class="lang-en">📋 Troubleshooting Tips</span>
+                <span class="lang-zh">📋 自行诊断小贴士</span>
+            </h3>
+            <p class="lang-en">If you encounter unusual behavior, try these steps:</p>
+            <p class="lang-zh">如果遇到奇怪行为，可以尝试以下步骤：</p>
             <ul style="margin-left: 1.6rem; margin-bottom: 0.3rem;">
-                <li>重启 PastePal（完全退出后重新打开）</li>
-                <li>检查 macOS 版本是否 ≥ 12.0 (Monterey)</li>
-                <li>查看菜单栏图标是否有红色角标提示权限问题</li>
-                <li>若问题与同步相关，可查看控制台日志（按住 ⌥ 点击菜单栏图标 → 打开日志文件夹）</li>
+                <li class="lang-en">Restart PastePal (completely quit and reopen)</li>
+                <li class="lang-zh">重启 PastePal（完全退出后重新打开）</li>
+                <li class="lang-en">Check if macOS version ≥ 12.0 (Monterey)</li>
+                <li class="lang-zh">检查 macOS 版本是否 ≥ 12.0 (Monterey)</li>
+                <li class="lang-en">Look for red badge on menubar icon indicating permission issues</li>
+                <li class="lang-zh">查看菜单栏图标是否有红色角标提示权限问题</li>
+                <li class="lang-en">For sync issues, check logs (⌥‑click menubar icon → Open Log Folder)</li>
+                <li class="lang-zh">若问题与同步相关，可查看控制台日志（按住 ⌥ 点击菜单栏图标 → 打开日志文件夹）</li>
             </ul>
         </div>
 
         <hr>
         <div style="text-align: left; margin: 1.2rem 0 0.2rem;">
-            <p style="font-size: 0.96rem;">📢 如需更多帮助，请通过上方邮箱联系我们，并尽可能提供：</p>
+            <p class="lang-en" style="font-size: 0.96rem;">📢 For further assistance, email us at the address above, and please include:</p>
+            <p class="lang-zh" style="font-size: 0.96rem;">📢 如需更多帮助，请通过上方邮箱联系我们，并尽可能提供：</p>
             <ul style="margin-left: 1.6rem; color: #2d4053;">
-                <li>问题描述及出现步骤</li>
-                <li>macOS 版本及设备型号</li>
-                <li>相关截图或录屏（可选）</li>
+                <li class="lang-en">Detailed description and steps to reproduce</li>
+                <li class="lang-zh">问题描述及出现步骤</li>
+                <li class="lang-en">macOS version and device model</li>
+                <li class="lang-zh">macOS 版本及设备型号</li>
+                <li class="lang-en">Screenshots/screen recording (optional)</li>
+                <li class="lang-zh">相关截图或录屏（可选）</li>
             </ul>
         </div>
 
-        <!-- 页脚信息 -->
+        <!-- Footer -->
         <div class="footer-note">
-            <span>© 2026 PastePal. 保留一切权利。</span>
+            <span class="lang-en">© 2026 PastePal. All rights reserved.</span>
+            <span class="lang-zh">© 2026 PastePal. 保留一切权利。</span>
             <span style="display: flex; gap: 20px;">
-                <a href="#" style="opacity: 0.7;">隐私政策</a>
+                <a href="#" class="lang-en">Privacy Policy</a>
+                <a href="#" class="lang-zh">隐私政策</a>
                 <span>｜</span>
-                <a href="#" style="opacity: 0.7;">版本历史</a>
+                <a href="#" class="lang-en">Version History</a>
+                <a href="#" class="lang-zh">版本历史</a>
             </span>
         </div>
         <p style="font-size: 0.8rem; color: #8e98a3; margin-top: 0.8rem; text-align: center; border-top: 1px dashed #dae2ec; padding-top: 1rem;">
-            技术支持专用邮箱：<a href="mailto:992976910@qq.com">992976910@qq.com</a> （点击即写邮件）<br>
-            本页最后更新：2026年2月13日
+            <span class="lang-en">Support email: </span>
+            <span class="lang-zh">技术支持专用邮箱：</span>
+            <a href="mailto:992976910@qq.com">992976910@qq.com</a><br>
+            <span class="lang-en">Last updated: February 13, 2026</span>
+            <span class="lang-zh">本页最后更新：2026年2月13日</span>
         </p>
     </div>
+
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            if (body.classList.contains('en')) {
+                body.classList.remove('en');
+                body.classList.add('zh');
+            } else {
+                body.classList.remove('zh');
+                body.classList.add('en');
+            }
+        }
+    </script>
 </body>
 </html>
